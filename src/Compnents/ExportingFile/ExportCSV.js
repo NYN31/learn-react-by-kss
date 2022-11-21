@@ -1,6 +1,6 @@
-import React, {useState, useRef, useEffect} from 'react';
-import {Box, Flex, Button, useToast} from "@chakra-ui/react";
-import { CSVLink } from "react-csv";
+import React, {useEffect, useRef, useState} from 'react';
+import {Box, Button, useToast} from "@chakra-ui/react";
+import {CSVLink} from "react-csv";
 import axios from "axios";
 
 const ExportCSV = () => {
@@ -11,21 +11,21 @@ const ExportCSV = () => {
   const toast = useToast();
 
   useEffect(() => {
-    if(csvData && csvInstance.current && csvInstance.current.link) {
+    if (csvData && csvInstance.current && csvInstance.current.link) {
       csvInstance.current.link.click();
       setCsvData(false);
     }
   }, [csvData]);
 
   const exportCsv = async () => {
-    try{
+    try {
       setLoading(true);
-      const response = await axios.create({ baseURL: 'https://jsonplaceholder.typicode.com'})
+      const response = await axios.create({baseURL: 'https://jsonplaceholder.typicode.com'})
         .get("/todos")
         .then(response => response);
       setCsvData(response.data);
       setLoading(false);
-    } catch(error) {
+    } catch (error) {
       //console.log(error);
       setLoading(false);
       toast({
@@ -40,44 +40,41 @@ const ExportCSV = () => {
 
   return (
     <Box>
-      <Flex direction="column" width="100%" height="100vh" justify="center" align="center">
-        <Button
-          variant="outline"
-          colorScheme="linkedin"
-          onClick={exportCsv}
-          disabled={loading}
-        >
-          {loading ? 'Export...' : 'Export'}
-        </Button>
+      <Button
+        variant="outline"
+        colorScheme="linkedin"
+        onClick={exportCsv}
+        disabled={loading}
+      >
+        {loading ? 'Exporting...' : 'Export CSV'}
+      </Button>
 
 
-        {/*not working*/}
+      {/*not working*/}
 
-        {/*<CSVLink*/}
-        {/*  data={csvResult}*/}
-        {/*  asyncOnClick={true}*/}
-        {/*  onClick={exportCsv}*/}
-        {/*  filename={`my-file.csv`}*/}
-        {/*  className="hidden"*/}
-        {/*  //ref={csvLink}*/}
-        {/*  target="_blank"*/}
-        {/*>*/}
-        {/*  {loading ? 'Loading...' : 'Loading'}*/}
-        {/*</CSVLink>*/}
+      {/*<CSVLink*/}
+      {/*  data={csvResult}*/}
+      {/*  asyncOnClick={true}*/}
+      {/*  onClick={exportCsv}*/}
+      {/*  filename={`my-file.csv`}*/}
+      {/*  className="hidden"*/}
+      {/*  //ref={csvLink}*/}
+      {/*  target="_blank"*/}
+      {/*>*/}
+      {/*  {loading ? 'Loading...' : 'Loading'}*/}
+      {/*</CSVLink>*/}
 
-        {/*working*/}
+      {/*working*/}
 
-        {csvData ? (
-          <CSVLink
-            data={csvData}
-            filename={`my-file.csv`}
-            className="hidden"
-            ref={csvInstance}
-            target="_blank"
-          />
-        ): null}
-
-      </Flex>
+      {csvData ? (
+        <CSVLink
+          data={csvData}
+          filename={`my-file.csv`}
+          className="hidden"
+          ref={csvInstance}
+          target="_blank"
+        />
+      ) : null}
     </Box>
   );
 };

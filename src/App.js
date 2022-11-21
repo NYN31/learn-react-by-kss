@@ -6,7 +6,7 @@ import NotUsingIndex from "./Compnents/ListAndKey/NotUsingIndex";
 import UsingIndex from "./Compnents/ListAndKey/UsingIndex";
 import EmployeeDetails from "./Compnents/useReducer/EmployeeDetails";
 import Test1 from "./Compnents/TestFolder/Test1";
-import ExportCSV from "./Compnents/ExportingFile/ExportCSV";
+import ExportDetails from "./Compnents/ExportingFile/ExportDetails";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
       <Route
         exact
         path="/export-file"
-        element={<ExportCSV/>}
+        element={<ExportDetails/>}
       />
       <Route
         exact
