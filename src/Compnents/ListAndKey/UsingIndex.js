@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Checkbox, Flex, Input} from "@chakra-ui/react";
+import BackToLandingPage from "../../utils/BackToLandingPage";
 
 const initialList = ['Learn JavaScript', 'Learn React', 'Learn GraphQL', 'Learn Java'];
 
@@ -35,6 +36,7 @@ const UsingIndex = () => {
           onClick={handleClick}
         >Reverse List</Button>
       </div>
+      <BackToLandingPage />
     </Flex>
   );
 };

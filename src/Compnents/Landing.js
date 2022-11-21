@@ -1,5 +1,5 @@
 import {Box, Button, Flex, Heading, Text} from "@chakra-ui/react";
-import HooksAndLocalStateManagement from "./LandingPage/HooksAndLocalStateManagement";
+import LinkButtons from "./LandingPage/LinkButtons";
 import {useNavigate} from "react-router-dom";
 
 const Landing = () => {
@@ -10,20 +10,8 @@ const Landing = () => {
         <Heading>Welcome to learn-react</Heading>
         <Text fontSize="38px">Today's topic: </Text>
         <Text fontSize="38px">React-hooks and Local-state Management</Text>
-        <Button
-          m={2}
-          bg="#0077C0"
-          color="#FFF"
-          _hover={{
-            bg: "#0077C0 !important",
-            color: "#FFF !important"
-          }}
-          onClick={() => navigate('/test-component')}
-        >
-          test
-        </Button>
         {/* Will be changed for each KSS */}
-        <HooksAndLocalStateManagement />
+        <LinkButtons />
       </Flex>
     </Box>
   );

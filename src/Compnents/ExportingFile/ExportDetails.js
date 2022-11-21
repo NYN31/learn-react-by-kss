@@ -2,6 +2,7 @@ import React from 'react';
 import {Box, Flex} from "@chakra-ui/react";
 import ExportCSV from "./ExportCSV";
 import ExportPDF from "./ExportPDF";
+import BackToLandingPage from "../../utils/BackToLandingPage";
 
 const ExportDetails = () => {
   return (
@@ -9,6 +10,7 @@ const ExportDetails = () => {
       <ExportCSV />
       <Box my={5}></Box>
       <ExportPDF />
+      <BackToLandingPage />
     </Flex>
   );
 };
